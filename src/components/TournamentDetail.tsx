@@ -8,7 +8,7 @@ import {
   ArrowLeft, Trophy, Calendar, Users, 
   Activity, Star, ChevronRight, MapPin 
 } from "lucide-react";
-import { Tournament, Team, Match } from "@/src/types";
+import type { Tournament, Team, Match } from "../types";
 
 export default function TournamentDetail() {
   const { id } = useParams();

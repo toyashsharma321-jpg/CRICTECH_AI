@@ -8,7 +8,7 @@ import {
   ArrowLeft, Trophy, Users, Activity, 
   Star, ChevronRight, Shield, Target, Award
 } from "lucide-react";
-import { Team, Player } from "@/src/types";
+import type { Team, Player } from "../types"; 
 
 export default function TeamDetail() {
   const { id } = useParams();

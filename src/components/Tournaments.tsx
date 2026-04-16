@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Calendar, Users, ChevronRight, Activity } from "lucide-react";
-import { Tournament } from "@/src/types";
+import type { Tournament } from "../types";
 
 export default function Tournaments() {
   const navigate = useNavigate();
