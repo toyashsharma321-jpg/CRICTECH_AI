@@ -1,0 +1,118 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique identifier for the user" },
+        "name": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "format": "email", "description": "Email address of the user" },
+        "photoURL": { "type": "string", "description": "URL to the user's profile picture" },
+        "role": { "type": "string", "enum": ["admin", "user"], "description": "User's role in the system" }
+      },
+      "required": ["uid", "name", "email"]
+    },
+    "AnalysisSession": {
+      "title": "Analysis Session",
+      "description": "A cricket video analysis session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique session ID" },
+        "userId": { "type": "string", "description": "ID of the user who owns this session" },
+        "videoUrl": { "type": "string", "description": "URL of the analyzed video" },
+        "status": { "type": "string", "enum": ["Processing", "Completed", "Failed"], "description": "Current status of the analysis" },
+        "resultData": { "type": "string", "description": "JSON string containing the analysis results" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the session was created" }
+      },
+      "required": ["id", "userId", "videoUrl", "status", "createdAt"]
+    },
+    "Player": {
+      "title": "Player",
+      "description": "Cricket player information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "team": { "type": "string" },
+        "role": { "type": "string" },
+        "battingStyle": { "type": "string" },
+        "bowlingStyle": { "type": "string" },
+        "stats": { "type": "object" },
+        "img": { "type": "string" },
+        "isFeatured": { "type": "boolean" }
+      },
+      "required": ["id", "name", "team", "role"]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "Cricket team information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "shortName": { "type": "string" },
+        "logo": { "type": "string" },
+        "color": { "type": "string" },
+        "stats": { "type": "object" }
+      },
+      "required": ["id", "name", "shortName"]
+    },
+    "Tournament": {
+      "title": "Tournament",
+      "description": "Cricket tournament information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "date": { "type": "string" },
+        "teams": { "type": "array" },
+        "img": { "type": "string" }
+      },
+      "required": ["id", "name", "status"]
+    },
+    "Match": {
+      "title": "Match",
+      "description": "Cricket match information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "team1": { "type": "string" },
+        "team2": { "type": "string" },
+        "date": { "type": "string" },
+        "venue": { "type": "string" },
+        "status": { "type": "string" },
+        "result": { "type": "string" },
+        "tournamentId": { "type": "string" }
+      },
+      "required": ["id", "team1", "team2", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/analysis_sessions/{sessionId}": {
+      "schema": "AnalysisSession",
+      "description": "Cricket analysis session documents"
+    },
+    "/players/{playerId}": {
+      "schema": "Player",
+      "description": "Player documents"
+    },
+    "/teams/{teamId}": {
+      "schema": "Team",
+      "description": "Team documents"
+    },
+    "/tournaments/{tournamentId}": {
+      "schema": "Tournament",
+      "description": "Tournament documents"
+    },
+    "/matches/{matchId}": {
+      "schema": "Match",
+      "description": "Match documents"
+    }
+  }
+}

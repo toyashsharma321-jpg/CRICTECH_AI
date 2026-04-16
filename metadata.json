@@ -1,0 +1,5 @@
+{
+  "name": "CricTech – AI Cricket Video Analysis",
+  "description": "An AI-powered platform for automated cricket video analysis, delivery segmentation, and batsman weakness detection.",
+  "requestFramePermissions": ["camera"]
+}
