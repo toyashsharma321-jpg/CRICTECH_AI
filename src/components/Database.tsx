@@ -8,7 +8,9 @@ import {
   Search, User, Zap, Activity, ArrowLeft, Globe, 
   Filter, Trophy, Star, ChevronRight, Users
 } from "lucide-react";
-import { Player } from "@/src/types";
+
+import type { Player } from "../types";   // ✅ ADD THIS
+import { PLAYERS } from "../data/players"; // ✅ already correct
 
 export default function Database() {
   const navigate = useNavigate();
@@ -19,16 +21,9 @@ export default function Database() {
   const [styleFilter, setStyleFilter] = useState<string>("All");
   const [isLoading, setIsLoading] = useState(true);
 
-import { ALL_PLAYERS } from "../data/players"; // adjust path if needed
-
-useEffect(() => {
-  try {
-    setPlayers(ALL_PLAYERS);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    setIsLoading(false);
-  }
+ useEffect(() => {
+  setPlayers(PLAYERS);
+  setIsLoading(false);
 }, []);
 
   const filteredPlayers = useMemo(() => {
