@@ -48,7 +48,9 @@ export default function UploadSection() {
     try {
       // 1. Real AI Analysis using Gemini
       setProgress(20);
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+     const ai = new GoogleGenAI({ 
+       apiKey: import.meta.env.VITE_GEMINI_API_KEY 
+     });
       
       const base64Data = await fileToBase64(file);
       setProgress(40);
