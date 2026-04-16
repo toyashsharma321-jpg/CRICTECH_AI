@@ -19,18 +19,17 @@ export default function Database() {
   const [styleFilter, setStyleFilter] = useState<string>("All");
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetch('/api/players')
-      .then(res => res.json())
-      .then(data => {
-        setPlayers(data);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setIsLoading(false);
-      });
-  }, []);
+import { ALL_PLAYERS } from "../data/players"; // adjust path if needed
+
+useEffect(() => {
+  try {
+    setPlayers(ALL_PLAYERS);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setIsLoading(false);
+  }
+}, []);
 
   const filteredPlayers = useMemo(() => {
     return players.filter(p => {
